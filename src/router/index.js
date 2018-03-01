@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import Seepost from '@/components/Seepost'
 import Mypage from '@/components/Mypage'
 import Update from '@/components/Update'
+import nav   from './nav'
 
 Vue.use(Router)
 
@@ -15,12 +16,13 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
     },
     {
       path: '/login',
       name: 'Login',
-      component: Login
+      component: Login,
+      beforeEnter: nav.globalNav
     },
     {
       path: '/post/:id',
@@ -30,12 +32,14 @@ export default new Router({
     {
       path: '/mypage',
       name: 'Mypage',
-      component: Mypage
+      component: Mypage,
+      beforeEnter: nav.authNav
     },
     {
       path: '/post/:id/edit',
       name: 'Update',
-      component: Update
+      component: Update,
+      beforeEnter: nav.authNav
     }
   ]
 })
